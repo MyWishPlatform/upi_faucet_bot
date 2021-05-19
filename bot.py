@@ -38,11 +38,11 @@ def valid_address_callback(update: Update, _: CallbackContext) -> None:
         update.message.reply_text(f"Transaction sent. \n{send_tokens(user_id, address)}")
     else:
         update.message.reply_text(
-            f"Sorry bit you've already received tokens. \n{readable_timeout(user_id, address)} remains")
+            f"Sorry but you've already received tokens. \n{readable_timeout(user_id, address)} remains")
 
 
 def invalid_address_callback(update: Update, _: CallbackContext) -> None:
-    update.message.reply_text("Please input valid ETH address")
+    update.message.reply_text("Please input valid ETH address.")
 
 
 def main() -> None:
