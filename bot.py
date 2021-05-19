@@ -21,12 +21,12 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
-def start(update, context):
+def start(update: Update, context) -> None:
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text="Hi!\nI'm UPI faucet-bot!\nYou can get test tokens from me.")
 
 
-def help(update, context):
+def help(update: Update, context) -> None:
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text="You can receive tokens by simply sending me your ETH address.")
 
@@ -65,7 +65,7 @@ def main() -> None:
 
 
 class AddressFilter(MessageFilter):
-    def filter(self, message: str):
+    def filter(self, message: str) -> bool:
         address = message.text
         return validate_address(address)
 

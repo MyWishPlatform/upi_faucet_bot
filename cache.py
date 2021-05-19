@@ -8,7 +8,7 @@ def store(id: int, address: str):
     r.set(address, id, ex=86400)
 
 
-def check_timeout(id: int, address: str):
+def check_timeout(id: int, address: str) -> bool:
     return True if r.exists(id) or r.exists(address) else False
 
 

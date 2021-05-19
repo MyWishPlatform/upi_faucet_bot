@@ -16,10 +16,10 @@ with open('settings/api.json') as file, open('settings/local.json') as secret, o
 
 contract = w3.eth.contract(address=contract_address, abi=abi)
 account = w3.eth.account.privateKeyToAccount(private_key)
-nonce = w3.eth.getTransactionCount(account.address)
 
 
 def send_tokens(user_id: int, address: str):
+    nonce = w3.eth.getTransactionCount(account.address)
     gas, gasprice = est_gas()
 
     data = {
@@ -38,5 +38,5 @@ def send_tokens(user_id: int, address: str):
     return hsh.hex()
 
 
-def validate_address(address: str):
+def validate_address(address: str) -> bool:
     return w3.isAddress(address) and w3.isChecksumAddress(address)
