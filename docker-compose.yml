@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: bot.Dockerfile
+    depends_on:
+      - redis
+    volumes:
+      - .:/app
+    restart: unless-stopped
+    networks:
+      upi_faucet_bot:
+  redis:
+    image: "redis:alpine"
+    networks:
+      upi_faucet_bot:
+
+
+networks:
+  upi_faucet_bot:
